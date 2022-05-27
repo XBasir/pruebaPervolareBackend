@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
-use App\User;
 
 class CategoriesController extends Controller
 {
@@ -35,7 +34,7 @@ class CategoriesController extends Controller
             'idParentCategory' => $request->idParentCategory
         ]);
 
-        return response()->json(['user' => "User Created Successfully"], 200);
+        return response()->json(['category' => "Category Created Successfully"], 200);
     }
 
     public function show($id)
@@ -47,14 +46,14 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return response()->json(['user' => $category], 200);
+        return response()->json(['category' => $category], 200);
     }
 
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
         $category->update($request->all());
-        return response()->json(['user' => $category,'message' => 'Category Updated Successfully'], 200);
+        return response()->json(['category' => $category,'message' => 'Category Updated Successfully'], 200);
     }
 
     public function destroy($id)
