@@ -38,6 +38,25 @@ class CategoriesController extends Controller
         return response()->json(['user' => "User Created Successfully"], 200);
     }
 
+    public function show($id)
+    {
+        $category = Category::find($id);
+        return response()->json(['category' => $category], 200);
+    }
+
+    public function edit($id)
+    {
+        $category = Category::find($id);
+        return response()->json(['user' => $category], 200);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $category = Category::find($id);
+        $category->update($request->all());
+        return response()->json(['user' => $category,'message' => 'Category Updated Successfully'], 200);
+    }
+
     public function destroy($id)
     {
         Category::where('id', $id)
